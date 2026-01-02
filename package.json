@@ -1,0 +1,25 @@
+{
+  "name": "release-insights-api",
+  "version": "1.0.0",
+  "description": "Build metadata API powering release dashboards and deployment health checks.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node server.js",
+    "start": "NODE_ENV=production node server.js",
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "author": "Kenneth Feh <kennethfeh@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "supertest": "^6.3.4"
+  }
+}
