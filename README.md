@@ -1,6 +1,6 @@
 # Release Insights API
 
-Small Express service that exposes `/build-info` and `/healthz` so CI/CD systems, dashboards, and runtime probes can read deployment metadata. I use this pattern to give stakeholders a simple JSON contract for commit IDs, versions, and rollout timestamps.
+Small Express service that exposes `/build-info` and `/healthz` so CI/CD systems, dashboards, and runtime probes can read deployment metadata. Provides a simple JSON contract for commit IDs, versions, and rollout timestamps.
 
 ## Endpoints
 
