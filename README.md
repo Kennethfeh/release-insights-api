@@ -9,6 +9,17 @@ Small Express service that exposes `/build-info` and `/healthz` so CI/CD systems
 | `GET /healthz` | Basic readiness probe used by Kubernetes, load balancers, or synthetic checks. |
 | `GET /build-info` | Returns `{ service, commit, version, timestamp }` pulled from environment variables injected at deploy time. |
 
+## Sample `/build-info` response
+
+```json
+{
+  "service": "release-insights-api",
+  "commit": "abc1234",
+  "version": "2.3.1",
+  "timestamp": "2024-05-10T12:44:01.001Z"
+}
+```
+
 ## Local development
 
 ```bash
@@ -45,3 +56,9 @@ In Kubernetes or ECS, inject `APP_VERSION`, `GIT_COMMIT`, and `PORT` through env
 - Ship `GET /build-info` responses to Grafana or Datadog dashboards to show which commit is serving traffic.
 - Wire `/healthz` to your load balancers and uptime checks—no authentication is required so you can safely attach synthetic monitors.
 - Extend this API with additional provenance (SBOM URLs, artifact digests) without changing clients; the JSON payload is intentionally namespaced.
+
+## Use cases
+
+- Deployment verification in Argo CD, Spinnaker, or GitHub Actions (compare `/build-info` to the desired commit SHA).
+- Populate “What’s running in prod?” dashboards without granting cluster access to stakeholders.
+- Power audit logs by storing `/build-info` responses whenever a release pipeline promotes a build.
